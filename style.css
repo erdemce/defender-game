@@ -1,0 +1,17 @@
+#startScreen{
+    width:600;
+    height:800
+}
+
+#level{
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    font:40px Verdana;
+}
+
+#endScreen{
+    text-align: center;
+    width:600;
+    height:800
+}
