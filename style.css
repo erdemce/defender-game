@@ -1,17 +1,54 @@
-#startScreen{
-    width:600;
-    height:800
+#start-screen{
+  margin:25px;
+    width:550px;
+    height:750px;
+    background-color: #99C24D;
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 1.3em;
+    border-radius: 50px;
+    line-height:1.6;
+    display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-around;
 }
+
+#end-screen{
+  margin:25px;
+  width:550px;
+  height:750px;
+  font-family: 'Yusei Magic', sans-serif;
+  font-size: 1.7em;
+  border-radius: 50px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-around;
+}
+
 
 #level{
     position: absolute;
     left: 200px;
     top: 200px;
-    font:40px Verdana;
+    font-size:40px;
+    font-family: 'Yusei Magic', sans-serif;
+
 }
 
-#endScreen{
-    text-align: center;
-    width:600;
-    height:800
-}
+  li{
+    padding: 0 0 10px 0;
+    list-style-type:none;
+  }
+  
+  li::before{
+    content: "✈︎ "; 
+    color: red; 
+    font-weight: bold;
+    font-size:1.4em;
+    }
+  
+  #play{
+    background-color:#048BA8
+  }
+  
