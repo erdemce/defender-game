@@ -30,7 +30,7 @@ let vehicles = [];
 let fires = [];
 let level = 1;
 let intervalId = 0;
-let restFire = 10
+let restAmmo = 10
 let score = 0;
 let pHealth = 1.5;
 let hHealth = 1;
@@ -75,7 +75,7 @@ function startLevel() {
     for (let i = 1; i < level; i++) {
         vehicleString = vehicleString + "ph"
     }
-    restFire = restFire + Math.floor(vehicleString.length * level * 1.3);
+    restAmmo = restAmmo + Math.floor(vehicleString.length * level * 1.3);
     createAllVehicles(vehicleString)
     pHealth = pHealth * 1.3;
     hHealth = hHealth * 1.3;
@@ -86,8 +86,8 @@ function startLevel() {
 }
 
 function createShoot(event) {
-    if (restFire > 0) {
-        restFire--;
+    if (restAmmo > 0) {
+        restAmmo--;
         let centerX = 298;
         let centerY = 731
         let x = centerX - event.pageX;
@@ -96,9 +96,10 @@ function createShoot(event) {
         let fire = new Fire(centerX, centerY, speedX, speedY, 1, 4)
         fires.push(fire);
         var fireAudio = new Audio('sounds/fire.flac');
+        fireAudio.volume = 0.2;
         fireAudio.play()
     } else {
-        alertText.innerHTML = "You haven't any fire more!<br>You will be destroyed!!!";
+        alertText.innerHTML = "You are out of ammo!<br>You will be destroyed!!!";
         alertText.style.display = "block"
         setTimeout(() => levelText.style.display = "none", 1500)
     }
@@ -153,7 +154,7 @@ function drawTexts() {
     ctx.font = "30px Verdana"
     ctx.fillText('Score:' + score, 20, 40);
     ctx.font = "24px Verdana"
-    ctx.fillText('Fire:' + restFire, 400, 40)
+    ctx.fillText('Ammo:' + restAmmo, 450, 40)
     ctx.closePath();
 }
 
@@ -223,15 +224,13 @@ function draw() {
             airFire = new Fire(250, 700, 2, 3, 2, 10)
             isFired = true;
             document.removeEventListener("mousedown", createShoot, true);
-            var fireAudio = new Audio('sounds/explossion.mp3');
-            fireAudio.play()
+            let explossionAudio = new Audio('sounds/explossion.mp3');
+            explossionAudio.volume = 0.15;
+            explossionAudio.play()
             setTimeout(() => {
                 end("You are fired");
-
             }, 3000)
-
         }
-
     })
 }
 
@@ -244,7 +243,7 @@ function startGame() {
     fires = [];
     level = 1;
     intervalId = 0;
-    restFire = 10
+    restAmmo = 10
     score = 0;
     pHealth = 1.5;
     hHealth = 1;
