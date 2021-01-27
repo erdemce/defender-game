@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Air Defender Game</title>
     <link rel="shortcut icon" href="#">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -13,28 +13,34 @@
 </head>
 
 <body>
-    <button id="level" class="btn btn-primary" disabled>LEVEL 1</button>
+    <label id="level" class="btn btn-primary">LEVEL 1</label>
+    <label id="alert" class="btn btn-primary"></label>
     <canvas width="600" height="800"> </canvas>
 
     <div id="start-screen" class="card-body">
-        <h2 class="card-title">Air-Defender</h2> <br>
-        <h4>Instructions:</h4>
+        <h1 class="card-title">
+            <img src="images/planeRight.png" alt="plane">
+            Air-Defender
+            <img src="images/helicopterLeft.png" alt="helicopter">
+        </h1>
+        <img src="images/defendersmall.png" alt="defender">
+        <h3>Instructions:</h3>
         <ul>
             <li>You are controlling the air-defender.</li>
-            <li>You can fire with targetting by mouse and clicking it.</li>
+            <li>You can target by mouse and click to fire.</li>
             <li>Try to destroy all of the air-vehicles.</li>
             <li>Each air-vehicle has got different health and speed.</li>
             <li>if you can destroy all of the air-vehicles in the level, the next level starts automatically.</li>
-            <li>if one of the air-vehicles can reach at the bottom, you lose!</li>
+            <li>if one of the air-vehicles can reach at the bottom, you are destroyed and loose!</li>
         </ul>
+        <input id="player" value="Guest" type="text">
         <a id="play" class="btn btn-primary btn-lg">PLAY</a>
     </div>
     <div id="end-screen" class="card text-white bg-danger mb-3">
-        <h1 id="result" class="card-title">GAME OVER</h1>
-        <h3 id="reason" class="card-title">You have been destroyed</h3>
-        <h3 id="score" class="card-text">Score: 1500</h3>
-        <h3 id="record">xxxxxx 00000</h3>
-        <a id="replay" class="btn btn-primary btn-lg">PLAY</a>
+        <h1 class="card-title">GAME OVER</h1>
+        <h2 id="score" class="card-text">Score: 1500</h2>
+        <h2 id="record"></h2>
+        <a id="replay" class="btn btn-primary btn-lg">REPLAY</a>
     </div>
 
     <script src="air_vehicles.js"></script>

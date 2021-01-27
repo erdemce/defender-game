@@ -4,6 +4,7 @@ let replayBtn = document.querySelector('#replay');
 let endScreen = document.querySelector("#end-screen");
 let startScreen = document.querySelector("#start-screen")
 let levelText = document.querySelector("#level");
+let alertText = document.querySelector("#alert");
 let canvas = document.querySelector("canvas");
 let ctx = canvas.getContext("2d");
 let bgImg = document.createElement('img')
@@ -18,10 +19,11 @@ let collImg = document.createElement('img')
 collImg.src = 'images/colision.png';
 let collBigImg = document.createElement('img')
 collBigImg.src = 'images/collBig.png';
-localStorage.setItem('name', "Unknown");
-localStorage.setItem('record', 0);
+
 
 //some first values
+localStorage.setItem('name', "Unknown");
+localStorage.setItem('record', 0);
 let isFired = false;
 let collisions = [];
 let vehicles = [];
@@ -93,28 +95,28 @@ function createShoot(event) {
         let speedX = speedY * x / y;
         let fire = new Fire(centerX, centerY, speedX, speedY, 1, 4)
         fires.push(fire);
-        var fireAudio = new Audio('sounds/fire2.flac');
+        var fireAudio = new Audio('sounds/fire.flac');
         fireAudio.play()
     } else {
-        end("You haven't any fire more")
+        alertText.innerHTML = "You haven't any fire more!<br>You will be destroyed!!!";
+        alertText.style.display = "block"
+        setTimeout(() => levelText.style.display = "none", 1500)
     }
 }
 
 function end(result) {
-    document.removeEventListener("mousedown", createShoot, true);
+
     clearInterval(intervalId);
     if (score > localStorage.getItem('record')) {
-        endScreen.insertBefore(highImg, endScreen.children[3]);
+        endScreen.insertBefore(highImg, endScreen.children[2]);
         localStorage.setItem('record', score);
+        localStorage.setItem("name", startScreen.querySelector("#player").value)
     }
     canvas.style.display = 'none';
     endScreen.style.display = "flex";
     endScreen.querySelector("#score").innerText = "Your Score: " + score;
-    endScreen.querySelector("#reason").innerText = result;
-
-
     endScreen.querySelector("#record").innerText =
-        localStorage.getItem("name") + ": " + localStorage.getItem("record");
+        "Highest Score:\n" + localStorage.getItem("name") + ": " + localStorage.getItem("record");
 }
 
 function drawShoot(fire) {
@@ -220,6 +222,7 @@ function draw() {
         if (vehicle.y > 600 && vehicle.x > 200 && airFire == "goon") {
             airFire = new Fire(250, 700, 2, 3, 2, 10)
             isFired = true;
+            document.removeEventListener("mousedown", createShoot, true);
             var fireAudio = new Audio('sounds/explossion.mp3');
             fireAudio.play()
             setTimeout(() => {
@@ -233,6 +236,7 @@ function draw() {
 }
 
 function startGame() {
+    alertText.style.display = "none";
     document.addEventListener("mousedown", createShoot, true)
     isFired = false;
     collisions = [];
@@ -249,8 +253,13 @@ function startGame() {
     speedY = -4;
     airFire = "goon";
     canvas.style.display = 'block'
+    if (highImg.parentNode) {
+        highImg.parentNode.removeChild(highImg);
+    }
+
     endScreen.style.display = "none";
     startScreen.style.display = "none"
+
     intervalId = setInterval(() => {
         requestAnimationFrame(draw)
     }, 5)
@@ -262,6 +271,7 @@ window.addEventListener('load', () => {
     canvas.style.display = 'none';
     levelText.style.display = "none";
     endScreen.style.display = "none";
+    alertText.style.display = "none";
 
     playBtn.addEventListener('click', () => {
         startGame()
