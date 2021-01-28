@@ -1,3 +1,6 @@
+body{
+padding:0 100px;
+}
 #start-screen {
   margin: 25px;
   width: 550px;
@@ -50,21 +53,19 @@
 
 #level {
   position: absolute;
-  left: 210px;
+  left: 310px;
   top: 400px;
   font-size: 40px;
   font-family: 'Yusei Magic', sans-serif;
-
 }
 
 #alert {
   position: absolute;
-  left: 168px;
+  left: 268px;
   top: 200px;
   font-size: 20px;
   font-family: 'Yusei Magic', sans-serif;
   text-align: center;
-
 }
 
 li {

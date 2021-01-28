@@ -7,4 +7,5 @@ class Fire {
         this.damage = damage;
         this.radius = radius;
     }
+    
 }
