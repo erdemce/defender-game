@@ -61,6 +61,6 @@ class Draw {
     drawAlertText(alertText) {
         alertText.innerHTML = "You are out of ammo!<br>You will be destroyed!!!";
         alertText.style.display = "block"
-        setTimeout(() => alertText.style.display = "none", 1500)
+        setTimeout(() => alertText.style.display = "none", 4000)
     }
 }
