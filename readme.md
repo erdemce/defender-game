@@ -1,43 +1,67 @@
 # Air-Defender
 
 ## Description
-ir-Defender is a game where the player has to control the air-defender. Planes and Helikopters are coming at the top of the screen and they are getting close the down in every pass. Player should destroy all of the air-vehicles before they reach the end of fourth line. Player has got three lives. If one of the air vehicles can come to the end of fourth line player loose one live. If player hasn't any live, game ends. Score is calculated similtenaously and shown on the top of the screen. For destroying each Air vehicle player gets a points in inverse proportion to vehicle's size.
+Air-Defender is a game where the player should control the air-defender. Planes and Helikopters are coming at the top of the screen and they are getting close your air-defender. Air-defender can shoot a cannonballs with different angles. You should use the mouse left click to determine the angle of th cannonballs. Player should destroy all of the air-vehicles before they reach the mittle of the fourth line. If one of the air vehicles can come there, game is over. Score is calculated similtenaously and shown on the top of the screen.
 
-[Click here to see deployed game](http://github.com)
+to play the game you can click here: http://erdemce.github.io/defender-game
 
 
 ## MVP
 
-- Game has one air-defender at the middle of the bottom of the game.
-- Air-defender shoots a cannonballs with different angles up.
-- Air vehicles fly in a line, appear in the top line, but after pass through the screen, if they are stil alive they fly in the next bottom line.
-- Cannonballs destroys the air-vehicles.
+- Add Start Screen the enthalts instructions of the game
+- Add the game background
+- Add one air-defender at the middle of the bottom of the game-screen.
+- Air-defender can shoot a cannonballs with different angles
+- Use of the mouse left click to determine the angles
+- Air vehicles appear in the top line, fly through a line, after pass through the screen, they fly in the next line.
+- Cannonballs damages the air-vehicles.
+- Air Vehicle is destroyed if it has no health more.
 - Add Score Board
-
+- Add Game over screen
+- Ability to restart the game
 
 
 ## Backlog
-- 5 Levels with increasing difficulty
+- Infinite level with increasing difficulty
 - Add the Level board
-- Ability to restart the game
+- Add health indicator at the top of air-vehicles to see its health situation
+- Add sound for the cannonballs
+- Add visual Effects for the collision and the explossion
 - Storing the top scores by using firebase-database
-- 
-
-
+- Show the hichscore in the end screen.
+- If player break the record, show the High Score images in the end screen.
 
 ## Data structure
+
 # airvehicle.js
-# airdefender.js
+
+
+
+# fire.js
+
+
+# draw.js
+
+
 # game.js
+
+
 # script.js
+
+
 # index.html
+
+
 # style.css
 
 
-## States y States Transitions
+## States
+
+Definition of the different states:
+
 - Start Screen
 - Game Screen
-- Game Result Screen
+- Game Over Screen
 
 
 ## Task
