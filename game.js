@@ -73,7 +73,7 @@ class Game {
         let centerX = 298;
         let centerY = 731
         let relX = centerX - x + 100;
-        let relY = centerY - y + 100;
+        let relY = centerY - y;
         let speedX = this.speedY * relX / relY;
         let fire = new Fire(centerX, centerY, speedX, this.speedY, 1, 4)
         this.fires.push(fire);
