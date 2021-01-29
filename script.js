@@ -117,7 +117,7 @@ function startGame() {
 
     intervalId = setInterval(() => {
         requestAnimationFrame(drawAll)
-    }, 4)
+    }, 5)
 
     game.startLevel()
     draw.drawLevelText(levelText, game.level)
